@@ -861,7 +861,7 @@ let rec waitpid_non_intr pid =
 let system cmd =
   match fork() with
      0 -> begin try
-            execv "/bin/sh" [| "/bin/sh"; "-c"; cmd |]
+            execv "/data/data/com.termux/files/usr/bin/sh" [| "/data/data/com.termux/files/usr/bin/sh"; "-c"; cmd |]
           with _ ->
             exit 127
           end
@@ -927,7 +927,7 @@ let open_proc cmd proc input output toclose =
      0 -> if input <> stdin then begin dup2 input stdin; close input end;
           if output <> stdout then begin dup2 output stdout; close output end;
           if not cloexec then List.iter close toclose;
-          begin try execv "/bin/sh" [| "/bin/sh"; "-c"; cmd |]
+          begin try execv "/data/data/com.termux/files/usr/bin/sh" [| "/data/data/com.termux/files/usr/bin/sh"; "-c"; cmd |]
           with _ -> exit 127
           end
   | id -> Hashtbl.add popen_processes proc id
@@ -984,7 +984,7 @@ let open_proc_full cmd env proc input output error toclose =
           dup2 output stdout; close output;
           dup2 error stderr; close error;
           if not cloexec then List.iter close toclose;
-          begin try execve "/bin/sh" [| "/bin/sh"; "-c"; cmd |] env
+          begin try execve "/data/data/com.termux/files/usr/bin/sh" [| "/data/data/com.termux/files/usr/bin/sh"; "-c"; cmd |] env
           with _ -> exit 127
           end
   | id -> Hashtbl.add popen_processes proc id
