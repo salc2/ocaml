@@ -1,2 +1,2 @@
-#! /usr/bin/cat
+#!/data/data/com.termux/files/usr/bin/cat
 exit 1
