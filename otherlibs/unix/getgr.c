@@ -26,7 +26,8 @@ static value alloc_group_entry(struct group *entry)
 
   Begin_roots3 (name, pass, mem);
     name = copy_string(entry->gr_name);
-    pass = copy_string(entry->gr_passwd);
+    /* on some platforms, namely Android, gr_passwd can be NULL - hence this workaround */
+    pass = copy_string(entry->gr_passwd ? entry->gr_passwd : "");
     mem = copy_string_array((const char**)entry->gr_mem);
     res = alloc_small(4, 0);
     Field(res,0) = name;
