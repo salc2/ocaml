@@ -18,7 +18,6 @@
 MAKEREC=$(MAKE)
 include Makefile.shared
 
-SHELL=sh
 MKDIR=mkdir -p
 
 # For users who don't read the INSTALL file
