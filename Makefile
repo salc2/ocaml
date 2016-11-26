@@ -27,7 +27,6 @@ YACCFLAGS=-v
 CAMLLEX=$(CAMLRUN) boot/ocamllex
 CAMLDEP=$(CAMLRUN) tools/ocamldep
 DEPFLAGS=$(INCLUDES)
-SHELL=/bin/sh
 MKDIR=mkdir -p
 
 OCAMLBUILDBYTE=$(WITH_OCAMLBUILD:=.byte)
