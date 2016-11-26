@@ -27,7 +27,7 @@ OCAMLLEX  = $(CAMLRUN) $(ROOTDIR)/boot/ocamllex
 OCAMLLIB  = $(LIBDIR)
 OCAMLBIN  = $(BINDIR)
 
-OCAMLPP=-pp './remove_DEBUG'
+OCAMLPP=-pp 'sh ./remove_DEBUG'
 
 # For installation
 ##############
