@@ -75,16 +75,16 @@ clean::
 .SUFFIXES: .mli .ml .cmi .cmo .cmx .p.cmx
 
 .mli.cmi:
-	$(CAMLC) $(COMPFLAGS) `./Compflags $@` -c $<
+	$(CAMLC) $(COMPFLAGS) `sh ./Compflags $@` -c $<
 
 .ml.cmo:
-	$(CAMLC) $(COMPFLAGS) `./Compflags $@` -c $<
+	$(CAMLC) $(COMPFLAGS) `sh ./Compflags $@` -c $<
 
 .ml.cmx:
-	$(CAMLOPT) $(COMPFLAGS) `./Compflags $@` -c $<
+	$(CAMLOPT) $(COMPFLAGS) `sh ./Compflags $@` -c $<
 
 .ml.p.cmx:
-	$(CAMLOPT) $(COMPFLAGS) `./Compflags $@` -p -c -o $*.p.cmx $<
+	$(CAMLOPT) $(COMPFLAGS) `sh ./Compflags $@` -p -c -o $*.p.cmx $<
 
 # Dependencies on the compiler
 $(OBJS) std_exit.cmo: $(COMPILER)
