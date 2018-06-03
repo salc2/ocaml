@@ -13,6 +13,8 @@
 (*                                                                        *)
 (**************************************************************************)
 
+let shell = "/data/data/com.termux/files/usr/bin/sh"
+
 type error =
     E2BIG
   | EACCES
@@ -869,7 +871,7 @@ external sys_exit : int -> 'a = "caml_sys_exit"
 let system cmd =
   match fork() with
      0 -> begin try
-            execv "/bin/sh" [| "/bin/sh"; "-c"; cmd |]
+            execv shell [| shell; "-c"; cmd |]
           with _ ->
             sys_exit 127
           end
@@ -937,7 +939,6 @@ let popen_processes = (Hashtbl.create 7 : (popen_process, int) Hashtbl.t)
 let open_proc cmd envopt proc input output error =
    match fork() with
      0 -> perform_redirections input output error;
-          let shell = "/bin/sh" in
           let argv = [| shell; "-c"; cmd |] in
           begin try
             match envopt with
